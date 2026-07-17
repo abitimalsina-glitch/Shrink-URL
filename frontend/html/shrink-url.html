@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/frontend/css/shrink-url.css">
+    <title>Shrink URL</title>
+</head>
+<body>
+
+    <header class="header">
+        <h1>Shrink URL</h1>
+        <p>Fast, simple, and reliable URL shortening.</p>
+    </header>
+
+    <main>
+        <section class="url-shortener">
+            <h2>Paste your URL here</h2>
+            <form id="url-form">
+                <label for="url-input"></label>
+                <input type="url" id="url-input" placeholder="https://example.com" autocomplete="url" required>
+                <button type="submit">Shorten URL</button>
+            </form>
+            <p id="description">Shrink URL is a tool that helps you shorten long URLs into shareable links.</p>
+        </section>
+
+        <section id="result" class="hidden">
+            <h2>Your shortened URL</h2>
+            <p>Your link is ready! Copy it using the button below.</p>
+            <div class="result-container">
+                <input type="text" id="short-url" readonly aria-label="Shortened URL">
+                <button type="button" id="copy-button">Copy URL</button>
+            </div>
+        </section>
+
+        <section class="description">
+            <h2>Simple and Effective URL Shortening</h2>
+            <p>Shrink URL makes it easy to create short, shareable links from long URLs. You can shorten any URL from any website such as
+                <a href="https://www.youtube.com" target="_blank" rel="noopener noreferrer">YouTube</a>,
+                <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">Facebook</a>,
+                <a href="https://x.com" target="_blank" rel="noopener noreferrer">X</a>,
+                <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a> and many more. Just paste the URL into the input field above and click the
+                "Shorten URL" button to get your shortened link.
+            </p>
+            <h2>How to use Shrink URL</h2>
+            <ol>
+                <li>Copy the URL you want to shorten.</li>
+                <li>Paste the URL into the input field above.</li>
+                <li>Click the "Shorten URL" button.</li>
+                <li>Copy the shortened URL and share it as needed.</li>
+            </ol>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Shrink URL. All rights reserved.</p>
+        <p>Created by <strong>Abi Timalsina</strong></p>
+    </footer>
+</body>
+</html>
