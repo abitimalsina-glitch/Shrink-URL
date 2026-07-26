@@ -1,15 +1,37 @@
-export const createShortUrl = async (req, res) => {
-    const { url } = req.body;
+import crypto from "crypto";
 
-    res.json({
-        url,
-    });
+export const createShortUrl = async (req, res) => {
+    try {
+        const { url } = req.body;
+        if (!url) {
+            return res.status(400).json({
+                message: "URL is required"
+            });
+        }
+
+        if (!isValidUrl(url)) {
+            return res.status(400).json({
+                message: "Invalid URL"
+            });
+        }
+    }
+
+    catch (error) {
+        res.status(500).json({
+            message: "Internal server error"
+        });
+    }
 }
 
 export const redirectToOriginalUrl = async (req, res) => {
-    const { shortCode } = req.params;
+    try {
+        const { shortCode } = req.params;
+    } 
 
-    res.json({
-        shortCode,
-    });
+    catch (error) {
+        res.status(500).json({
+            message: "Internal Sever Error"
+        });
+    }
+    
 }
