@@ -1,117 +1,256 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+  
 body {
-    margin: 0;
-    color: #333;
-    min-height: 100vh;
-    font-family: sans-serif;
-}
-
-img, svg {
-    max-width: 100%;
-    height: auto;
-}
-
-.header {
-    padding: 2rem 1rem;
-    text-align: center;
-    color: #fff;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.header h1 {
-    margin: 0 0 0.5rem;
-    font-size: 2.2rem;
-    color : #ba17f0;
-}
-
-.header p {
-    margin: 0;
+    font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: #ffffff;
     color: #000000;
-    font-size: 1.2rem;
+    line-height: 1.6;
+}
+  
+.header {
+    background-color: #ba17f0;
+    color: #ffffff;
+    text-align: center;
+    padding: 40px 20px;
+  }
+  
+.header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+  
+.header p {
+    font-size: 1.1rem;
+}
+
+main {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
 .url-shortener {
-    display: flex;
-    flex-direction: column;
     text-align: center;
-    width: 100%;
     max-width: 650px;
-    margin: 2rem auto;
-    padding: 2rem;
-    background: #fff;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 50px 0;
     border-radius: 16px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    background: #fff;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
 }
-
+  
 .url-shortener h2 {
     color: #ba17f0;
-    margin-top: 0;
-    margin-bottom: 1rem;
-    text-align: center;
+    font-size: 1.8rem;
+    margin-bottom: 25px;
 }
-
-.url-shortener input {
-    width: 100%;
-    max-width: 500px;
-    padding: 0.85rem 1rem;
-    margin-bottom: 1rem;
-    border: 1px solid #e6b8f7;
-    border-radius: 8px;
+  
+#url-form {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 600px;
+    margin: 0 auto;
+}
+  
+#url-input {
+    flex: 1 1 300px;
+    padding: 14px 16px;
     font-size: 1rem;
-    transition: border-color 0.2s ease, box-shadow 0.2s ease;
-    box-sizing: border-box;
+    color: #000000;
+    background-color: #ffffff;
+    border: 2px solid #cccccc;
+    border-radius: 6px;
+    transition: border-color 0.2s ease;
 }
-
-.url-shortener input:focus {
+  
+#url-input:focus {
     outline: none;
     border-color: #ba17f0;
-    box-shadow: 0 0 0 3px rgba(186, 23, 240, 0.15);
 }
-
-.url-shortener button {
-    background: linear-gradient(90deg, #ba17f0 0%, #d458fd 100%);
-    border-radius: 8px;
-    color: #fff;
-    border: none;
-    padding: 1rem;
-    cursor: pointer;
+  
+#url-form button {
+    padding: 14px 28px;
+    font-size: 1rem;
     font-weight: 600;
+    color: #ffffff;
+    background-color: #ba17f0;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+  
+#url-form button:hover,
+#url-form button:focus-visible {
+    background-color: #9d13cc;
+}
+  
+#description {
+    margin-top: 20px;
+    font-size: 1.1rem;
+    color: #000000;
 }
 
-.url-shortener button:hover {
-    box-shadow: 0 8px 18px rgba(186, 23, 240, 0.25);
+#result {
+    text-align: center;
+    padding: 20px 0 50px;
+}
+  
+#result h2 {
+    color: #000000;
+    font-size: 1.6rem;
+    margin-bottom: 10px;
+}
+  
+#result p {
+    margin-bottom: 20px;
+}
+  
+.result-container {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 600px;
+    margin: 0 auto;
+}
+  
+#short-url {
+    flex: 1 1 300px;
+    padding: 14px 16px;
+    font-size: 1rem;
+    color: #000000;
+    background-color: #f7f7f7;
+    border: 2px solid #cccccc;
+    border-radius: 6px;
+}
+  
+#copy-button {
+    padding: 14px 28px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #ffffff;
+    background-color: #ba17f0;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+ }
+  
+#copy-button:hover,
+#copy-button:focus-visible {
+    background-color: #9d13cc;
 }
 
-.url-shortener p{
-    font-size: 1.2rem;
-}
-
+  
 .description {
     max-width: 650px;
     margin: 50px auto;
-    padding: 0 20px;        
+    padding: 0 20px;
     text-align: left;
 }
-
+  
+.description h2 {
+    color: #000000;
+    font-size: 1.5rem;
+    margin: 30px 0 15px;
+}
+  
+.description h2:first-child {
+    margin-top: 0;
+}
+  
 .description p {
     font-size: 1.1rem;
     line-height: 1.8;
     color: #000000;
+    margin-bottom: 15px;
 }
-
+  
 .description ol {
     padding-left: 20px;
     font-size: 1.1rem;
     line-height: 1.8;
 }
-
+  
+.description li {
+    margin-bottom: 8px;
+}
+  
+.description a {
+    color: #000000;
+    text-decoration: underline;
+}
+  
+.description a:hover,
+.description a:focus-visible {
+    color: #ba17f0;
+}
+  
 footer {
-    background-color: #cb22c5;
-    padding: 1rem;
     text-align: center;
-    margin-top: 2rem;
+    padding: 30px 20px;
+    background-color: #ba17f0;
+    border-top: 1px solid #eeeeee;
 }
-
+  
 footer p {
-    margin: 0;
     color: #ffffff;
+    font-size: 0.95rem;
+    margin-bottom: 6px;
 }
+  
+@media (max-width: 600px) {
+    .header {
+      padding: 40px 15px;
+    }
+  
+    .header h1 {
+      font-size: 1.8rem;
+    }
+  
+    .header p {
+      font-size: 1rem;
+    }
+  
+    .url-shortener h2 {
+      font-size: 1.5rem;
+    }
+  
+    #url-form,
+    .result-container {
+      flex-direction: column;
+    }
+  
+    #url-input,
+    #url-form button,
+    #short-url,
+    #copy-button {
+      flex: 0 1 auto;
+      width: 100%;
+    }
+  
+    #url-form button,
+    #copy-button {
+      padding: 11px 20px;
+      font-size: 0.9rem;
+    }
+  
+    .description {
+      margin: 30px auto;
+    }
+  
+    .description p,
+    .description ol {
+      font-size: 1rem;
+    }
+  }
