@@ -1,57 +1,19 @@
-import Url from "../models/urlModel.js";
-import { isValidUrl } from "../utils/validateUrl.js";
-import AppError from "../utils/AppError.js";
-import crypto from "crypto";
-
+import { createShortenedUrl, resolveShortCode } from "../services/urlServices.js";
 
 export const createShortUrl = async (req, res, next) => {
     try {
         const { url } = req.body;
-        if (!url) {
-            return next(new AppError("URL is required", 400));
-        }
-        if (!isValidUrl(url)) {
-            return next(new AppError("Invalid URL", 400));
-        }
 
-        const normalizedUrl = url.trim().toLowerCase();
+        const { urlDoc, isNew } = await createShortenedUrl(url);
+        const shortUrl = `${req.protocol}://${req.get("host")}/${urlDoc.shortCode}`;
 
-        const existingUrl = await Url.findOne({
-            originalUrl: normalizedUrl
-        });
-        if (existingUrl) {
-            return res.status(200).json({
-                success: true,
-                data: {
-                    ...existingUrl.toObject(),
-                    shortUrl: `${req.protocol}://${req.get("host")}/${existingUrl.shortCode}`
-                }
-            });
-        }
-
-        let shortCode;
-        do {
-            shortCode = crypto
-                .randomBytes(4)
-                .toString("hex");
-
-        }while (
-            await Url.exists({ shortCode })
-        );
-
-        const newUrl = await Url.create({
-            originalUrl: normalizedUrl,
-            shortCode
-        });
-
-        return res.status(201).json({
+        return res.status(isNew ? 201 : 200).json({
             success: true,
-            message: "Short URL created successfully",
-
+            ...(isNew && { message: "Short URL created successfully" }),
             data: {
-                ...newUrl.toObject(),
-                shortUrl: `${req.protocol}://${req.get("host")}/${shortCode}`
-            }
+                ...urlDoc.toObject(),
+                shortUrl,
+            },
         });
     } catch (error) {
         next(error);
@@ -59,25 +21,11 @@ export const createShortUrl = async (req, res, next) => {
 };
 
 export const redirectToOriginalUrl = async (req, res, next) => {
-
     try {
-
         const { shortCode } = req.params;
 
-        const url = await Url.findOne({
-            shortCode
-        });
-        if (!url) {
-            return next(new AppError("Short URL not found", 404));
-        }
-        await Url.findOneAndUpdate(
-            { shortCode },
-            {
-                $inc: {
-                    clicks: 1
-                }
-            }
-        );
+        const url = await resolveShortCode(shortCode);
+
         return res.redirect(url.originalUrl);
     } catch (error) {
         next(error);

@@ -1,9 +1,10 @@
 import express from 'express'
 import {createShortUrl, redirectToOriginalUrl,} from '../controllers/urlControllers.js'
+import { validateShortenRequest } from '../middleware/validationMiddleware.js'
 
 const router = express.Router();
 
-router.post("/shorten", createShortUrl);
+router.post("/shorten", validateShortenRequest, createShortUrl);
 
 router.get("/:shortCode", redirectToOriginalUrl);
 
