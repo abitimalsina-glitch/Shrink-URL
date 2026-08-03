@@ -142,7 +142,6 @@ main {
     background-color: #9d13cc;
 }
 
-  
 .description {
     max-width: 650px;
     margin: 50px auto;
@@ -185,6 +184,85 @@ main {
 .description a:hover,
 .description a:focus-visible {
     color: #ba17f0;
+}
+
+main {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 50px 20px;
+}
+
+.result-container {
+    max-width: 650px;
+    margin: 0 auto;
+    padding: 50px 40px;
+    text-align: center;
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+}
+
+.result-container h2 {
+    color: #ba17f0;
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+
+.result-container p {
+    font-size: 1.1rem;
+    color: #000000;
+    margin-bottom: 30px;
+}
+
+.copy-container {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+#short-url {
+    flex: 1;
+    min-width: 300px;
+    padding: 14px 16px;
+    font-size: 1rem;
+    border: 2px solid #cccccc;
+    border-radius: 6px;
+    background-color: #f7f7f7;
+}
+
+#copy-button {
+    padding: 14px 28px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #ffffff;
+    background-color: #ba17f0;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+#copy-button:hover,
+#copy-button:focus-visible {
+    background-color: #9d13cc;
+}
+
+#home-button {
+    padding: 14px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #ffffff;
+    background-color: #ba17f0;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+#home-button:hover,
+#home-button:focus-visible {
+    background-color: #9d13cc;
 }
   
 footer {
