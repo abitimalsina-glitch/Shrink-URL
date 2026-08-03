@@ -4,25 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/frontend/css/result.css">
+    <link rel="icon" type="image/png" href="../images/ShrinkURL.png">
     <title>shrink-url-result</title>
 </head>
 <body>
+
     <header class="header">
         <h1>Shrink URL</h1>
         <p>Fast, simple, and reliable URL shortening.</p>
     </header>
     
-    <section id="result">
-        <h2>Your shortened URL</h2>
-        <p>Your link is ready! Copy it using the button below.</p>
-    
+    <main>
         <div class="result-container">
+            <h2>Shortened URL</h2>
+            <p>Your link is ready! Copy it using the button below.</p>
             <input type="text" id="short-url" readonly aria-label="Shortened URL">
-            <button type="button" id="copy-button">
-                Copy URL
-            </button>
+            <button type="button" id="copy-button">Copy URL</button>
+            <p>Copy the link below and share it with others.</p>
+            <p>Long URL: </p>
+            <button type="button" id="home-button">Shorten Another URL</button>
         </div>
-    </section>
+    </main>
+
+    <script src="../js/result.js"></script>
     
     <footer>
         <p>&copy; 2026 Shrink URL. All rights reserved.</p>

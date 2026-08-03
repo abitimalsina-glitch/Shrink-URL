@@ -115,15 +115,6 @@ main {
     margin-bottom: 20px;
 }
   
-.result-container {
-    display: flex;
-    gap: 12px;
-    flex-wrap: wrap;
-    justify-content: center;
-    max-width: 600px;
-    margin: 0 auto;
-}
-  
 #short-url {
     flex: 1 1 300px;
     padding: 14px 16px;
