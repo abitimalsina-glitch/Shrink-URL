@@ -15,18 +15,32 @@ Top-level:
 
 Repository layout (annotated)
 ```
-weather-api/
-├── images/                
-├── src/
-│   ├── routes/
-│   │   └── weather.js      #
-│   ├── services/
-│   │   └── weather.js      # 
-│   └── server.js           # 
-├── .env.example
-├── .gitignore
-├── LICENSE
-├── package.json
+Shrink-URL/
+├── backend/
+│   ├── .gitignore
+│   ├── package-lock.json
+│   ├── package.json
+│   └── src/
+│       ├── app.js                # Express app setup (middleware, routing)
+│       ├── server.js             # server entrypoint (starts the app)
+│       ├── config/
+│       │   └── Database.js       # DB connection/configuration
+│       ├── controllers/
+│       │   └── urlControllers.js # request handlers for URL endpoints
+│       ├── middleware/
+│       │   └── validationMiddleware.js  # request validation helpers
+│       ├── models/
+│       │   └── urlModel.js       # data model for URL records
+│       ├── routes/
+│       │   └── urlRoutes.js      # API route definitions
+│       ├── services/
+│       │   └── urlServices.js    # business logic for creating/resolving URLs
+│       └── utils/                # misc helpers
+├── frontend/
+│   ├── css/                      # styles
+│   ├── html/                     # HTML pages
+│   ├── images/                   # image assets
+│   └── js/                       # client-side JavaScript
 └── README.md
 ```
 
