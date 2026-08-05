@@ -5,7 +5,7 @@ export const createShortUrl = async (req, res, next) => {
         const { url } = req.body;
 
         const { urlDoc, isNew } = await createShortenedUrl(url);
-        const shortUrl = `${req.protocol}://${req.get("host")}/${urlDoc.shortCode}`;
+        const shortUrl = `${process.env.BASE_URL}/${urlDoc.shortCode}`;
 
         return res.status(isNew ? 201 : 200).json({
             success: true,
