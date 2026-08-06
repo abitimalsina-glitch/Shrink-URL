@@ -1,19 +1,38 @@
 # Shrink-URL
 
-Shrink-URL is a small URL-shortening web app: a static frontend for creating short links and a Node.js backend that creates, stores, and resolves shortened URLs.
+Shrink-URL is a small URL-shortening web app with a static frontend and a Node.js backend. The frontend lets users create short links and the backend creates, stores, and resolves them.
 
-### Stack
-- **Language(s):** JavaScript (frontend and backend), CSS, HTML  
-- **Framework / runtime:** Node.js (Express-style HTTP API for the backend)  
-- **Notable libraries:** Express (backend HTTP), a database driver configured in `backend/src/config/Database.js`, and standard middleware (CORS / body parsing / configuration via env). See `backend/package.json` for exact dependencies.
 
-## What’s in this repo
+## Language composition
+- JavaScript: 45.6%
+- CSS: 29.5%
+- HTML: 24.9%
+
+
+## Features
+- Create short URLs from long URLs
+- Resolve short URLs to their original destinations
+- Simple REST API for creating and resolving links
+- Static frontend (HTML/CSS/JS) that consumes the backend API
+
+
+## Tech stack
+- Language: JavaScript (frontend + backend)
+- Runtime: Node.js
+- HTTP framework: Express (backend)
+- Database: configured via `backend/src/config/Database.js`
+- Middleware: CORS, body parsing, environment-based configuration
+
+
+## Repo layout
 Top-level:
+
 - `backend/` — Node.js API and server code
 - `frontend/` — static frontend (HTML/CSS/JS)
 - `README.md` — this file
 
-Repository layout (annotated)
+Annotated layout:
+
 ```
 Shrink-URL/
 ├── backend/
@@ -44,6 +63,76 @@ Shrink-URL/
 └── README.md
 ```
 
-How it fits together
-- The frontend is a static web UI that calls the backend API to create and resolve short links.
-- The backend exposes routes defined in `backend/src/routes/urlRoutes.js`. Routes delegate to controllers in `backend/src/controllers/`, which call services in `backend/src/services/`. Services persist and retrieve URL mappings using the model in `backend/src/models/urlModel.js`. Database connection and configuration live in `backend/src/config/Database.js`.
+
+## Getting started (development)
+These are the steps to run the project locally. There are separate steps for backend and frontend.
+
+Prerequisites
+- Node.js (12+ recommended)
+- A database supported/configured in `backend/src/config/Database.js` (e.g. SQLite, PostgreSQL, MongoDB depending on configuration)
+
+
+### Backend
+1. cd into the backend directory:
+   - cd backend
+2. Install dependencies:
+   - npm install
+3. Configure environment variables. Create a `.env` file (or set env vars) with values similar to:
+
+```
+PORT=3000
+DATABASE_URL=<your-database-connection-string>
+NODE_ENV=development
+```
+
+4. Start the server (development):
+   - npm run dev   # or `node src/server.js` depending on package.json scripts
+
+The backend exposes an API (see API section below).
+
+
+### Frontend
+The frontend is static. You can serve the files from any static server or open the HTML directly in a browser during development.
+
+1. Open `frontend/html/index.html` (or the main HTML file) in your browser, or serve the `frontend/` directory using a static server.
+2. Ensure the frontend is configured to call the backend API (adjust base URL in `frontend/js` if necessary).
+
+
+## API (example)
+The project usually exposes endpoints similar to the following (confirm actual routes in `backend/src/routes/urlRoutes.js`):
+
+- POST /api/urls
+  - Create a new short URL
+  - Body: { "url": "https://example.com/very/long/path" }
+  - Response: { "short": "abc123", "url": "https://example.com/..." }
+
+- GET /:short
+  - Redirects to the original URL associated with `:short` (status 302/301 depending on implementation)
+
+- GET /api/urls/:short
+  - Optional: return metadata about the short URL (original URL, createdAt, hits, etc.)
+
+
+## Database
+Database connection details are in `backend/src/config/Database.js`. Check that file to see which DB is used and how to configure connection strings. For quick/local development you can use a file-based DB (e.g., SQLite) if supported.
+
+
+## Tests
+If there are tests configured, run them from the backend folder, e.g.:
+- npm test
+
+
+## Contributing
+Contributions are welcome. Typical workflow:
+1. Fork the repo
+2. Create a feature branch
+3. Make changes and add tests where appropriate
+4. Open a pull request describing your changes
+
+
+## License
+Add license information here if applicable (e.g., MIT). If no license is present, add one or clarify repository terms.
+
+
+## Notes
+- This README was updated to add setup, API documentation, and usage instructions. For exact runtime scripts, routes, and environment variable names, refer to the files in `backend/src/`.
