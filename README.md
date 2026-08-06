@@ -115,24 +115,3 @@ The project usually exposes endpoints similar to the following (confirm actual r
 
 ## Database
 Database connection details are in `backend/src/config/Database.js`. Check that file to see which DB is used and how to configure connection strings. For quick/local development you can use a file-based DB (e.g., SQLite) if supported.
-
-
-## Tests
-If there are tests configured, run them from the backend folder, e.g.:
-- npm test
-
-
-## Contributing
-Contributions are welcome. Typical workflow:
-1. Fork the repo
-2. Create a feature branch
-3. Make changes and add tests where appropriate
-4. Open a pull request describing your changes
-
-
-## License
-Add license information here if applicable (e.g., MIT). If no license is present, add one or clarify repository terms.
-
-
-## Notes
-- This README was updated to add setup, API documentation, and usage instructions. For exact runtime scripts, routes, and environment variable names, refer to the files in `backend/src/`.
